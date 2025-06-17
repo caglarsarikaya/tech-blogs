@@ -554,6 +554,62 @@ body::before {
     opacity: 0.8;
 }
 
+/* Go to Top Button */
+.go-to-top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #58a6ff, #40c4ff);
+    border: none;
+    border-radius: 50%;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 
+        0 4px 12px rgba(88, 166, 255, 0.3),
+        0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.8);
+    backdrop-filter: blur(10px);
+}
+
+.go-to-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.go-to-top-btn:hover {
+    background: linear-gradient(135deg, #40c4ff, #58a6ff);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 
+        0 6px 20px rgba(88, 166, 255, 0.4),
+        0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.go-to-top-btn:active {
+    transform: translateY(0) scale(0.95);
+    box-shadow: 
+        0 2px 8px rgba(88, 166, 255, 0.3),
+        0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.go-to-top-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.go-to-top-btn:hover svg {
+    transform: translateY(-2px);
+}
+
 /* Responsive design */
 /* Large screens (1200px and up) */
 @media (min-width: 1200px) {
@@ -726,6 +782,18 @@ body::before {
         font-size: 0.75rem;
     }
     
+    .go-to-top-btn {
+        width: 42px;
+        height: 42px;
+        bottom: 1.2rem;
+        right: 1.2rem;
+    }
+    
+    .go-to-top-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+    
     .title-main {
         font-size: clamp(2rem, 8vw, 2.8rem);
     }
@@ -856,6 +924,18 @@ body::before {
     }
     
     .feeling-lucky-btn svg {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .go-to-top-btn {
+        width: 40px;
+        height: 40px;
+        bottom: 1rem;
+        right: 1rem;
+    }
+    
+    .go-to-top-btn svg {
         width: 14px;
         height: 14px;
     }
