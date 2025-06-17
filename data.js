@@ -1,57 +1,77 @@
 const techBlogs = [
     {
-        name: "Ars Technica",
-        url: "https://arstechnica.com",
-        description: "Offers deep dives into software, hardware, cybersecurity, and scientific innovation, targeting technically savvy readers."
+        name: "Apple Machine Learning Research",
+        url: "https://machinelearning.apple.com/",
+        description: "Insights into how Apple approaches machine learning across on-device intelligence, privacy-preserving models, and real-world applications at scale."
+    },
+    {
+        name: "AWS Machine Learning Blog",
+        url: "https://aws.amazon.com/blogs/machine-learning/",
+        description: "Covers machine learning use cases, architecture patterns, and tutorials for leveraging AWS services like SageMaker and Bedrock."
+    },
+    {
+        name: "Berkeley AI Research Blog (BAIR)",
+        url: "https://bair.berkeley.edu/blog/",
+        description: "Presents cutting-edge research, experiments, and commentary from one of the world’s leading academic AI labs at UC Berkeley."
     },
     {
         name: "DoorDash Engineering",
         url: "https://careersatdoordash.com/engineering-blog/",
-        description: "Covers technical challenges and solutions in logistics, backend systems, data infrastructure, and mobile development at DoorDash."
+        description: "Detailed insights into large-scale systems design, logistics optimization, experimentation frameworks, and how DoorDash handles hyper-growth challenges. Ideal for backend and data engineers."
     },
     {
-        name: "Gizmodo",
-        url: "https://gizmodo.com",
-        description: "Delivers news and reviews on gadgets, consumer technology, and science with a casual and critical voice."
+        name: "Google DeepMind Blog",
+        url: "https://www.deepmind.com/blog",
+        description: "Explores breakthroughs in AI research and applications across areas like reinforcement learning, protein folding, and large language models."
     },
     {
-        name: "Hacker News",
-        url: "https://news.ycombinator.com",
-        description: "Community-driven aggregator focused on tech, programming, startups, and scientific discoveries."
+        name: "Google Research Blog",
+        url: "https://research.googleblog.com/",
+        description: "Highlights the latest research results, publications, and open-source tools coming from Google’s AI and computer science teams."
     },
     {
-        name: "Mashable",
-        url: "https://mashable.com",
-        description: "Covers trending topics in tech, entertainment, digital culture, and social media with a viral content angle."
+        name: "KDnuggets",
+        url: "https://www.kdnuggets.com/",
+        description: "Popular data science and machine learning portal covering trends, tutorials, industry news, and opinions from practitioners."
     },
     {
-        name: "Stack Overflow Blog",
-        url: "https://stackoverflow.blog",
-        description: "Insights and articles about software development, engineering culture, and the Stack Overflow community."
+        name: "Machine Learning Mastery",
+        url: "https://machinelearningmastery.com/blog/",
+        description: "Practical ML tutorials and how-to guides, especially useful for those learning Python-based machine learning from scratch."
     },
     {
-        name: "TechCrunch",
-        url: "https://techcrunch.com",
-        description: "Covers breaking tech news, startup funding, Silicon Valley, and emerging technology companies."
+        name: "MarkTechPost",
+        url: "https://www.marktechpost.com/",
+        description: "AI research summaries, startup coverage, and academic-to-industry translation of cutting-edge papers in ML, NLP, and robotics."
     },
     {
-        name: "The Verge",
-        url: "https://www.theverge.com",
-        description: "Blends technology news, consumer electronics reviews, and digital culture commentary with multimedia content."
+        name: "MIT News – Artificial Intelligence",
+        url: "https://news.mit.edu/topic/artificial-intelligence2",
+        description: "Reports on AI advancements, applications, and research from across MIT’s departments and affiliated labs."
     },
     {
-        name: "VentureBeat",
-        url: "https://venturebeat.com",
-        description: "Focuses on tech innovation, AI, enterprise software, and startup investment news."
+        name: "OpenAI Blog",
+        url: "https://openai.com/news/",
+        description: "Official updates from OpenAI on new models, research papers, product launches, and policy initiatives in AI."
     },
     {
-        name: "Wired",
-        url: "https://www.wired.com",
-        description: "Features long-form articles on technology, culture, and science with in-depth analysis and futuristic outlooks."
+        name: "Pragmatic Engineer",
+        url: "https://blog.pragmaticengineer.com/",
+        description: "A top independent engineering blog discussing tech leadership, scalable systems, team management, and hiring insights."
     },
     {
-        name: "ZDNet",
-        url: "https://www.zdnet.com",
-        description: "Provides IT professionals with news, analysis, and best practices in enterprise tech, security, and hardware."
+        name: "TopBots",
+        url: "https://www.topbots.com/",
+        description: "Business-focused AI blog covering enterprise AI adoption, vendor landscape, and applied NLP, CV, and automation use cases."
+    },
+    {
+        name: "Towards AI",
+        url: "https://www.towardsai.net/",
+        description: "A community-driven AI publication covering tutorials, opinion pieces, research trends, and industry applications of AI."
+    },
+    {
+        name: "Whatnot Engineering",
+        url: "https://medium.com/whatnot-engineering",
+        description: "Engineering blog of Whatnot, focusing on GraphQL, event-driven architecture, observability, and scaling a live commerce platform."
     }
 ];
