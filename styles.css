@@ -122,30 +122,20 @@ body::before {
     position: relative;
 }
 
-/* Header description */
-.header-description {
-    margin-top: 2rem;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.header-description p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #8b949e;
-    margin-bottom: 1rem;
-}
+/* Reduced header spacing for mobile optimization */
 
 /* Contribute banner */
 .contribute-banner {
-    margin-top: 1.5rem;
-    padding: 1rem 1.5rem;
+    margin-top: 1rem;
+    padding: 0.8rem 1.2rem;
     background: linear-gradient(135deg, rgba(88, 166, 255, 0.1), rgba(64, 196, 255, 0.05));
     border: 1px solid rgba(88, 166, 255, 0.3);
     border-radius: 12px;
     position: relative;
     overflow: hidden;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .contribute-banner::before {
@@ -1186,16 +1176,176 @@ body::before {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-    
+
     .background-animation {
         animation: none;
     }
-    
+
     body::before {
         animation: none;
     }
-    
+
     .blog-card {
         animation: none;
+    }
+}
+
+/* Footer Styles */
+.site-footer {
+    margin-top: 4rem;
+    background: linear-gradient(135deg, rgba(13, 17, 23, 0.95), rgba(22, 27, 34, 0.95));
+    border-top: 1px solid rgba(88, 166, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.site-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(88, 166, 255, 0.5), transparent);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 3rem 0 2rem;
+}
+
+.footer-section {
+    color: #c9d1d9;
+}
+
+.footer-section h3 {
+    color: #58a6ff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-family: 'Orbitron', monospace;
+}
+
+.footer-section h4 {
+    color: #79b8ff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+}
+
+.footer-section p {
+    line-height: 1.6;
+    color: #8b949e;
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section li {
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+    color: #8b949e;
+}
+
+.footer-section li strong {
+    color: #c9d1d9;
+}
+
+.tech-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.tech-category p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.search-terms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.term {
+    background: rgba(88, 166, 255, 0.1);
+    color: #79b8ff;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(88, 166, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.term:hover {
+    background: rgba(88, 166, 255, 0.2);
+    border-color: rgba(88, 166, 255, 0.5);
+    transform: translateY(-1px);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(88, 166, 255, 0.1);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.footer-links a {
+    color: #58a6ff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #79b8ff;
+}
+
+.separator {
+    color: #8b949e;
+}
+
+.footer-tagline {
+    color: #8b949e;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Footer responsive adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 2rem 0 1.5rem;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .separator {
+        display: none;
+    }
+    
+    .search-terms {
+        justify-content: center;
     }
 } 
