@@ -119,6 +119,55 @@ body::before {
     font-weight: 300;
     letter-spacing: 2px;
     text-transform: uppercase;
+    position: relative;
+}
+
+/* Tooltip */
+.tooltip-trigger {
+    position: relative;
+}
+
+.tooltip {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(22, 27, 34, 0.98);
+    color: #c9d1d9;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    width: 400px;
+    max-width: 90vw;
+    max-height: 300px;
+    overflow-y: auto;
+    white-space: normal;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    border: 1px solid rgba(88, 166, 255, 0.4);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    font-weight: normal;
+    text-transform: none;
+    letter-spacing: normal;
+    line-height: 1.5;
+    pointer-events: none;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 8px solid transparent;
+    border-top-color: rgba(22, 27, 34, 0.98);
+}
+
+.tooltip-trigger:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* Search container */
@@ -377,12 +426,14 @@ body::before {
     margin-bottom: 1.5rem;
     font-size: 0.95rem;
     flex-grow: 1;
+    position: relative;
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
     max-height: 6rem;
+    cursor: help;
 }
 
 .blog-actions {
