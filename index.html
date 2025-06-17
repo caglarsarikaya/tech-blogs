@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Tech Blogs - Community-Driven Blog Directory</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <div class="container">
+        <header class="header">
+            <h1 class="title">
+                <span class="title-main">OPEN TECH</span>
+                <span class="title-sub">BLOGS</span>
+            </h1>
+            <p class="subtitle">Community-Driven Directory • Contribute via Pull Requests</p>
+        </header>
+
+        <div class="search-container">
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search community blogs...">
+                <div class="search-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                        <path d="21 21l-4.35-4.35" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="sort-container">
+                <label for="sortSelect" class="sort-label">Sort by:</label>
+                <select id="sortSelect" class="sort-select">
+                    <option value="name-asc">Name (A-Z)</option>
+                    <option value="name-desc">Name (Z-A)</option>
+                </select>
+            </div>
+            <div class="search-stats">
+                <span id="resultCount">8</span> community blogs available
+            </div>
+        </div>
+
+        <div class="blogs-grid" id="blogsGrid">
+            <!-- Blog cards will be dynamically inserted here -->
+        </div>
+
+        <div class="no-results" id="noResults" style="display: none;">
+            <div class="no-results-icon">⚠</div>
+            <h3>No matching blogs found</h3>
+            <p>Try different search terms or contribute new blogs via pull request</p>
+        </div>
+    </div>
+
+    <!-- Load data first, then application logic -->
+    <script src="data.js"></script>
+    <script>
+        // DOM elements
+        const searchInput = document.getElementById('searchInput');
+        const blogsGrid = document.getElementById('blogsGrid');
+        const resultCount = document.getElementById('resultCount');
+        const noResults = document.getElementById('noResults');
+        const sortSelect = document.getElementById('sortSelect');
+        
+        // Current state
+        let currentBlogs = [...techBlogs];
+        let currentSearchQuery = '';
+        let currentSortOrder = 'name-asc';
+        
+        // Sort functions
+        function sortBlogs(blogs, sortOrder) {
+            const sortedBlogs = [...blogs];
+            
+            switch (sortOrder) {
+                case 'name-asc':
+                    return sortedBlogs.sort((a, b) => a.name.localeCompare(b.name));
+                case 'name-desc':
+                    return sortedBlogs.sort((a, b) => b.name.localeCompare(a.name));
+                default:
+                    return sortedBlogs;
+            }
+        }
+        
+        // Create blog card HTML
+        function createBlogCard(blog, index) {
+            return `
+                <div class="blog-card" style="animation-delay: ${index * 0.1}s">
+                    <div class="blog-card-inner">
+                        <div class="blog-header">
+                            <h3 class="blog-name">${blog.name}</h3>
+                            <div class="blog-status">ACTIVE</div>
+                        </div>
+                        <div class="blog-url">
+                            <span class="url-label">URL:</span>
+                            <a href="${blog.url}" target="_blank" rel="noopener noreferrer" class="blog-link">
+                                ${blog.url}
+                            </a>
+                        </div>
+                        <p class="blog-description">${blog.description}</p>
+                        <div class="blog-actions">
+                            <a href="${blog.url}" target="_blank" rel="noopener noreferrer" class="access-btn">
+                                <span>VISIT BLOG</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="7 17l10-10M17 7H7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Render blogs
+        function renderBlogs(blogs) {
+            if (blogs.length === 0) {
+                blogsGrid.style.display = 'none';
+                noResults.style.display = 'block';
+                resultCount.textContent = '0';
+                return;
+            }
+            
+            blogsGrid.style.display = 'grid';
+            noResults.style.display = 'none';
+            blogsGrid.innerHTML = blogs.map((blog, index) => createBlogCard(blog, index)).join('');
+            resultCount.textContent = blogs.length;
+        }
+        
+        // Apply current filters and sorting
+        function updateDisplay() {
+            let filteredBlogs = techBlogs;
+            
+            // Apply search filter
+            if (currentSearchQuery.trim()) {
+                const searchText = currentSearchQuery.toLowerCase();
+                filteredBlogs = techBlogs.filter(blog => {
+                    return (
+                        blog.name.toLowerCase().includes(searchText) ||
+                        blog.url.toLowerCase().includes(searchText) ||
+                        blog.description.toLowerCase().includes(searchText)
+                    );
+                });
+            }
+            
+            // Apply sorting
+            const sortedBlogs = sortBlogs(filteredBlogs, currentSortOrder);
+            currentBlogs = sortedBlogs;
+            
+            renderBlogs(currentBlogs);
+        }
+        
+        // Search function
+        function searchBlogs(query) {
+            currentSearchQuery = query;
+            updateDisplay();
+        }
+        
+        // Sort function
+        function handleSortChange(sortOrder) {
+            currentSortOrder = sortOrder;
+            updateDisplay();
+        }
+        
+        // Event listeners
+        searchInput.addEventListener('input', (e) => {
+            searchBlogs(e.target.value);
+        });
+        
+        sortSelect.addEventListener('change', (e) => {
+            handleSortChange(e.target.value);
+        });
+        
+        searchInput.addEventListener('focus', () => {
+            searchInput.placeholder = 'Search by name, URL, or description...';
+        });
+        
+        searchInput.addEventListener('blur', () => {
+            if (!searchInput.value) {
+                searchInput.placeholder = 'Search community blogs...';
+            }
+        });
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set default sort to A-Z
+            sortSelect.value = 'name-asc';
+            currentSortOrder = 'name-asc';
+            updateDisplay();
+        });
+    </script>
+</body>
+</html> 
