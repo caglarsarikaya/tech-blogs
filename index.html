@@ -29,6 +29,14 @@
                     </svg>
                 </div>
             </div>
+            <div class="feeling-lucky-container">
+                <button id="feelingLuckyBtn" class="feeling-lucky-btn">
+                    <span>I'm Feeling Lucky</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
             <div class="sort-container">
                 <label for="sortSelect" class="sort-label">Sort by:</label>
                 <select id="sortSelect" class="sort-select">
@@ -61,6 +69,7 @@
         const resultCount = document.getElementById('resultCount');
         const noResults = document.getElementById('noResults');
         const sortSelect = document.getElementById('sortSelect');
+        const feelingLuckyBtn = document.getElementById('feelingLuckyBtn');
         
         // Current state
         let currentBlogs = [...techBlogs];
@@ -161,6 +170,50 @@
             updateDisplay();
         }
         
+        // Feeling Lucky function
+        function feelingLucky() {
+            // Get a random blog from the tech blogs array
+            const randomIndex = Math.floor(Math.random() * techBlogs.length);
+            const randomBlog = techBlogs[randomIndex];
+            
+            // Clear search to show all blogs
+            searchInput.value = '';
+            currentSearchQuery = '';
+            updateDisplay();
+            
+            // Add a visual effect to the button
+            feelingLuckyBtn.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                feelingLuckyBtn.style.transform = '';
+            }, 150);
+            
+            // Wait a moment for the display to update, then open the random blog
+            setTimeout(() => {
+                // Open the blog in a new tab
+                window.open(randomBlog.url, '_blank', 'noopener,noreferrer');
+                
+                // Optional: Also highlight the selected blog card briefly
+                const blogCards = document.querySelectorAll('.blog-card');
+                blogCards.forEach((card, index) => {
+                    if (card.querySelector('.blog-name').textContent === randomBlog.name) {
+                        card.style.transform = 'translateY(-8px) scale(1.02)';
+                        card.style.borderColor = 'rgba(255, 215, 0, 0.6)';
+                        card.style.boxShadow = '0 20px 40px rgba(255, 215, 0, 0.2), 0 0 0 2px rgba(255, 215, 0, 0.3)';
+                        
+                        // Scroll to the highlighted card
+                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        // Reset the highlight after 3 seconds
+                        setTimeout(() => {
+                            card.style.transform = '';
+                            card.style.borderColor = '';
+                            card.style.boxShadow = '';
+                        }, 3000);
+                    }
+                });
+            }, 100);
+        }
+        
         // Event listeners
         searchInput.addEventListener('input', (e) => {
             searchBlogs(e.target.value);
@@ -179,6 +232,8 @@
                 searchInput.placeholder = 'Search community blogs...';
             }
         });
+        
+        feelingLuckyBtn.addEventListener('click', feelingLucky);
         
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', () => {

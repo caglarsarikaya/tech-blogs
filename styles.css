@@ -182,6 +182,52 @@ body::before {
     margin: 0 auto 1rem;
 }
 
+/* Feeling Lucky Button */
+.feeling-lucky-container {
+    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
+}
+
+.feeling-lucky-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, #ffd700, #ff8c00);
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-family: 'Exo 2', sans-serif;
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.feeling-lucky-btn:hover {
+    background: linear-gradient(135deg, #ff8c00, #ffd700);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+.feeling-lucky-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.feeling-lucky-btn:hover svg {
+    transform: rotate(180deg) scale(1.1);
+}
+
+.feeling-lucky-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+}
+
 /* Sort container */
 .sort-container {
     display: flex;
@@ -609,6 +655,11 @@ body::before {
         min-width: 150px;
     }
     
+    .feeling-lucky-btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.8rem;
+    }
+    
     .title {
         font-size: clamp(1.8rem, 7vw, 3rem);
     }
@@ -668,6 +719,11 @@ body::before {
     .sort-select {
         width: 100%;
         max-width: 200px;
+    }
+    
+    .feeling-lucky-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.75rem;
     }
     
     .title-main {
@@ -791,6 +847,17 @@ body::before {
         max-width: 180px;
         padding: 0.6rem;
         font-size: 0.85rem;
+    }
+    
+    .feeling-lucky-btn {
+        padding: 0.6rem 0.9rem;
+        font-size: 0.7rem;
+        gap: 0.4rem;
+    }
+    
+    .feeling-lucky-btn svg {
+        width: 14px;
+        height: 14px;
     }
     
     .search-stats {
