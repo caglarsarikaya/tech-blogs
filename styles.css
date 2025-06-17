@@ -366,6 +366,7 @@ body::before {
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 1rem;
+    min-height: 3.5rem;
 }
 
 .blog-name {
@@ -375,19 +376,16 @@ body::before {
     color: #f0f6fc;
     margin: 0;
     line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 3.25rem;
+    flex: 1;
+    min-width: 0;
 }
-
-.blog-status {
-    background: linear-gradient(135deg, #238636, #2ea043);
-    color: #ffffff;
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    animation: pulse 2s infinite;
-}
+ 
 
 @keyframes pulse {
     0%, 100% { opacity: 1; }
@@ -396,6 +394,9 @@ body::before {
 
 .blog-url {
     margin-bottom: 1rem;
+    min-height: 2.5rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .url-label {
@@ -413,6 +414,9 @@ body::before {
     margin-top: 0.3rem;
     font-family: 'Courier New', monospace;
     transition: color 0.3s ease;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .blog-link:hover {
@@ -581,10 +585,13 @@ body::before {
         flex-direction: row;
         align-items: flex-start;
         gap: 1rem;
+        min-height: 3rem;
     }
     
     .blog-name {
         font-size: 1.1rem;
+        max-height: 2.8rem;
+        -webkit-line-clamp: 2;
     }
     
     .search-input {
@@ -637,16 +644,16 @@ body::before {
         flex-direction: column;
         gap: 0.8rem;
         align-items: flex-start;
+        min-height: 3.8rem;
     }
     
     .blog-name {
         font-size: 1.05rem;
         line-height: 1.4;
+        max-height: 2.8rem;
+        -webkit-line-clamp: 2;
     }
-    
-    .blog-status {
-        align-self: flex-start;
-    }
+     
     
     .search-input {
         padding: 0.9rem 2.5rem 0.9rem 0.9rem;
@@ -718,18 +725,16 @@ body::before {
         flex-direction: column;
         gap: 0.7rem;
         align-items: flex-start;
+        min-height: 3.5rem;
     }
     
     .blog-name {
         font-size: 1rem;
         line-height: 1.3;
+        max-height: 2.6rem;
+        -webkit-line-clamp: 2;
     }
-    
-    .blog-status {
-        align-self: flex-start;
-        padding: 0.25rem 0.6rem;
-        font-size: 0.65rem;
-    }
+ 
     
     .blog-url {
         margin-bottom: 0.8rem;
@@ -738,6 +743,9 @@ body::before {
     .blog-link {
         font-size: 0.85rem;
         word-break: break-all;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     
     .blog-description {
@@ -871,6 +879,8 @@ body::before {
     
     .blog-name {
         font-size: 0.95rem;
+        max-height: 2.4rem;
+        -webkit-line-clamp: 2;
     }
     
     .blog-description {
